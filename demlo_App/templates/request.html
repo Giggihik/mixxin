@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Заявка{% endblock %}
+{% block main_content %}
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <h2>Создать заявку</h2>
+    <form action="{% url 'request-form' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Отправить</button>
+    </form>
+{% endblock %}
